@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:15-alpine
+    container_name: snipshare-db
+    environment:
+      POSTGRES_USER: snipshare
+      POSTGRES_PASSWORD: snipshare123
+      POSTGRES_DB: snipshare_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - snipshare-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U snipshare"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: snipshare-backend
+    environment:
+      NODE_ENV: development
+      PORT: 3001
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_NAME: snipshare_db
+      DB_USER: snipshare
+      DB_PASSWORD: snipshare123
+      JWT_SECRET: votre_secret_jwt_super_securise_123
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - snipshare-network
+    command: npm run dev
+
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: snipshare-frontend
+    environment:
+      REACT_APP_API_URL: http://localhost:3001
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - snipshare-network
+    command: npm start
+
+volumes:
+  postgres_data:
+
+networks:
+  snipshare-network:
+    driver: bridge
