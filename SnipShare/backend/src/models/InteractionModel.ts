@@ -1,4 +1,4 @@
-import pool from '../src/config/database';
+import pool from '../libs/database';
 import { Commentaire, Like, CreerCommentaireDTO } from '../types/types';
 
 class InteractionModel {

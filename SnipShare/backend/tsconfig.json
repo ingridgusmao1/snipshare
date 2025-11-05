@@ -10,9 +10,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "esnext",
-    "types": [],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "types": [],
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],

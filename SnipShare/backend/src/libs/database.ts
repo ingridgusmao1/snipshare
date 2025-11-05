@@ -9,13 +9,14 @@ const pool = new Pool({
   max: 20, 
   idleTimeoutMillis: 30000, 
   connectionTimeoutMillis: 2000, 
+});
 
 pool.on('connect', () => {
-  console.log(' Connexion à PostgreSQL établie');
+  console.log('Connexion à PostgreSQL établie');
 });
 
 pool.on('error', (err) => {
-  console.error( Erreur PostgreSQL:', err);
+  console.error('Erreur PostgreSQL:', err);
   process.exit(-1);
 });
 

@@ -1,9 +1,9 @@
-import pool from '../config/database';
-import { Utilisateur, UtilisateurSansMotDePasse, CreerUtilisateurDTO } from '../types/types';
-import argon2 from 'argon2';
+import pool from '../libs/database';
+import type { Utilisateur, UtilisateurSansMotDePasse, CreerUtilisateurDTO } from '../types/types';
+import * as argon2 from "argon2";
 
 class UtilisateurModel {
-]
+
   async creer(data: CreerUtilisateurDTO): Promise<UtilisateurSansMotDePasse> {
     const motDePasseHash = await argon2.hash(data.mot_de_passe);
     

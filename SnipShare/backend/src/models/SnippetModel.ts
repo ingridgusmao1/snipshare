@@ -1,4 +1,4 @@
-import pool from '../config/database';
+import pool from '../libs/database';
 import { Snippet, CreerSnippetDTO, ModifierSnippetDTO } from '../types/types';
 
 class SnippetModel {
@@ -29,7 +29,7 @@ class SnippetModel {
     return snippet;
   }
 
-]
+
   async trouverParId(id: number): Promise<Snippet | null> {
     const query = `
       SELECT * FROM snippet_avec_likes
@@ -39,7 +39,7 @@ class SnippetModel {
     return result.rows[0] || null;
   }
 
-]
+
   async obtenirPublics(page: number = 1, limit: number = 12): Promise<{ snippets: Snippet[], total: number }> {
     const offset = (page - 1) * limit;
     
