@@ -16,18 +16,13 @@ interface AuthContextType {
   deconnexion: () => Promise<void>;
 }
 
-// Créer le contexte d'authentification
 const AuthContext = createContext<AuthContextType | null>(null);
 
-/**
- * Hook personnalisé useAuth
- * Permet d'accéder aux fonctions d'authentification depuis n'importe quel composant
- */
+
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
   if (!context) {
-    // Pour l'instant, retourner des valeurs par défaut
-    // TODO: Implémenter AuthProvider dans App.tsx
+
     return {
       user: null,
       loading: false,
