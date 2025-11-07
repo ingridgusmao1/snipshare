@@ -1,3 +1,4 @@
+// App.tsx - Composant racine avec React Router
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -11,7 +12,7 @@ import {
   SnippetDetailPage, 
   ProfilePage, 
   SearchPage 
-} from './index';
+} from './pages/index';
 
 
 const App: React.FC = () => {

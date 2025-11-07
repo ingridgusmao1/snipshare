@@ -1,12 +1,8 @@
-// Navbar.tsx - Barre de navigation
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../hooks/useAuth';
 
-/**
- * Composant Navbar - Barre de navigation principale
- * Affiche différents liens selon si l'utilisateur est connecté ou non
- */
+
 const Navbar: React.FC = () => {
   const { user, isAuthenticated, deconnexion } = useAuth();
   const navigate = useNavigate();

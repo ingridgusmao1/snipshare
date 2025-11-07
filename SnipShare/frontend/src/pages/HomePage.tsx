@@ -1,15 +1,10 @@
-// HomePage.tsx - Page d'accueil
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-/**
- * Page d'accueil du site SnipShare
- * Affiche le hero, les fonctionnalités et le CTA
- */
+
 const HomePage: React.FC = () => {
   return (
     <>
-      {/* Hero Section */}
       <section className="hero">
         <div className="container">
           <div className="hero-content">
@@ -49,7 +44,6 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Features Section */}
       <section className="features" style={{ padding: '3rem 0' }}>
         <div className="container">
           <h2 className="section-title" style={{
@@ -149,7 +143,6 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="hero" style={{ padding: '3rem 0' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <h2 style={{ 

@@ -1,10 +1,7 @@
-// Footer.tsx - Pied de page
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-/**
- * Composant Footer - Pied de page de l'application
- */
+
 const Footer: React.FC = () => {
   return (
     <footer className="footer">

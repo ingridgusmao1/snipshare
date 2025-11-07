@@ -1,12 +1,7 @@
-// LoginPage.tsx - Page de connexion
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 
-/**
- * Page de connexion
- * Permet à l'utilisateur de se connecter avec email et mot de passe
- */
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [motDePasse, setMotDePasse] = useState('');
